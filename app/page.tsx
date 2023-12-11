@@ -1,9 +1,11 @@
-import { ThemeToggle } from "@/components/theme-toggle";
+import { initialProfile } from "@/lib/initial-profile";
 
-export default function Home() {
+export default async function Home() {
+  const profile = await initialProfile();
+
   return (
     <div>
-      <ThemeToggle />
+      
     </div>
   )
 }
