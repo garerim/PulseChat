@@ -50,6 +50,18 @@
   }
 }
 
+.grow {
+  animation: grow 0.8s ease-in-out forwards;
+}
+
+@keyframes grow {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
  
 @layer base {
   * {
