@@ -43,7 +43,7 @@ export async function PATCH(
         }
 
         if (!params.pollId) {
-            return new NextResponse("Channel Id Missing", {status: 400});
+            return new NextResponse("Poll Id Missing", {status: 400});
         }
 
         const sondage = await db.sondage.update({

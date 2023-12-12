@@ -1,7 +1,7 @@
 "use client";
 
 import { useModal } from "@/hooks/use-modal-store";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 
 const PollCreateButton = () => {
     const { onOpen } = useModal();

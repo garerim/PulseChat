@@ -1,42 +1,22 @@
-
-import { PollCard } from "@/components/poll-card";
-import PollCreateButton from "@/components/poll-create-button";
-import { Button } from "@/components/ui/button";
-import { useModal } from "@/hooks/use-modal-store"
+import { PollCard } from "@/components/poll/poll-card";
 import { currentProfile } from "@/lib/current-profile";
-import { db } from "@/lib/db";
-import { redirectToSignIn } from "@clerk/nextjs";
-import { Sondage } from "@prisma/client";
+import { db } from "@/lib/db"
 
 const HomePage = async () => {
 
   const profile = await currentProfile();
-
-  if (!profile) {
-    return redirectToSignIn();
-  }
-
-  const sondages = await db.sondage.findMany({
-    where: {
-      userId: profile.id
-    }
-  })
+  const sondages = await db.sondage.findMany();
 
   return (
-    <div>
-      <div className="flex justify-between px-4 mt-4">
-        <h2 className="text-2xl font-bold">My Polls</h2>
-        <PollCreateButton />
-      </div>
-      <div className="mt-4 flex flex-wrap gap-5 px-5">
-        {sondages.map((sondage) => (
-          <PollCard key={sondage.id} sondage={sondage} />
+    <div className="pt-12">
+      <h1 className="text-[10vw] md:text-8xl font-bold text-center">Welcome on <br /> <span className="text-primary">PulseChat</span></h1>
+      <p className="text-[4vw] md:text-xl text-zinc-600 dark:text-zinc-400 text-center mt-4">The best way to create polls and vote on them.</p>
+      <p className="text-[4vw] md:text-xl text-zinc-600 dark:text-zinc-400 text-center"> Explore the polls created by the community.</p>
+
+      <div className="max-w-[1400px] mx-auto flex flex-wrap gap-3 justify-center mt-10">
+        {sondages?.filter(s => s.isPublic === true).map((sondage) => (
+          <PollCard key={sondage.id} sondage={sondage} profile={profile} />
         ))}
-        {!sondages.length && (
-          <div className="w-full">
-            <p className="text-xl mt-20 font-bold text-zinc-400 text-center">You don't have any polls yet...</p>
-          </div>
-        )}
       </div>
     </div>
   )
