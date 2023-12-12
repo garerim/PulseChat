@@ -1,7 +1,7 @@
 import { Sondage } from '@prisma/client';
 import { create } from 'zustand'
 
-export type ModalType = "createSondage";
+export type ModalType = "createSondage" | "editSondage" | "deleteSondage";
 
 interface ModalData{
     sondage?: Sondage;

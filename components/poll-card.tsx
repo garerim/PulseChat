@@ -19,13 +19,14 @@ import { Sondage } from '@prisma/client';
 import Link from 'next/link';
 import { Button } from "./ui/button";
 import { ChevronRight, Edit, MoreVertical, Trash } from "lucide-react";
+import { useModal } from "@/hooks/use-modal-store";
 
 interface PollCardProps {
     sondage: Sondage
 }
 
 export const PollCard = ({ sondage }: PollCardProps) => {
-
+    const { onOpen } = useModal()
     const nbVote = sondage.nbVote1 + sondage.nbVote2;
 
     return (
@@ -41,17 +42,13 @@ export const PollCard = ({ sondage }: PollCardProps) => {
                             </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent side="right">
-                            <DropdownMenuItem>
-                                <Button>
-                                    <Edit className="w-4 h-4 mr-auto" />
-                                    <p>Edit</p>
-                                </Button>
+                            <DropdownMenuItem onClick={() => onOpen('editSondage', {sondage})}>
+                                <Edit className="w-4 h-4 mr-auto" />
+                                <p>Edit</p>
                             </DropdownMenuItem>
-                            <DropdownMenuItem>
-                                <Button>
-                                    <Trash className="w-4 h-4 mr-auto" />
-                                    <p>Delete</p>
-                                </Button>
+                            <DropdownMenuItem onClick={() => onOpen('deleteSondage', {sondage})}>
+                                <Trash className="w-4 h-4 mr-auto" />
+                                <p>Delete</p>
                             </DropdownMenuItem>
                         </DropdownMenuContent>
                     </DropdownMenu>
@@ -59,8 +56,8 @@ export const PollCard = ({ sondage }: PollCardProps) => {
             </CardHeader>
             <CardContent>
                 <div className='flex justify-between items-center'>
-                    <p className='text-xs text-zinc-300 font-bold'>{sondage.choice1}</p>
-                    <p className='text-xs text-zinc-300 font-bold'>{sondage.choice2}</p>
+                    <p className='text-xs text-zinc-700 dark:text-zinc-300 font-bold'>{sondage.choice1}</p>
+                    <p className='text-xs text-zinc-700 dark:text-zinc-300 font-bold'>{sondage.choice2}</p>
                 </div>
                 <div className='flex items-center mt-1'>
                     <div className='h-3 bg-indigo-500 rounded-l-full'
@@ -70,7 +67,7 @@ export const PollCard = ({ sondage }: PollCardProps) => {
                         style={{ width: (sondage.nbVote2 * 100) / nbVote > 0 ? (sondage.nbVote2 * 100) / nbVote + "%" : "50%" }}></div>
                 </div>
             </CardContent>
-            <CardFooter className="flex justify-end items-center">
+            <CardFooter className="flex justify-end items-center -my-3">
                 <Button className="flex items-center" variant='ghost'>
                     <Link href={`/poll/${sondage.id}`} className="flex items-center">
                         See
