@@ -79,7 +79,8 @@ export const PollCard = ({ sondage, profile }: PollCardProps) => {
                         style={{ width: (sondage.nbVote2 * 100) / nbVote > 0 ? (sondage.nbVote2 * 100) / nbVote + "%" : "50%" }}></div>
                 </div>
             </CardContent>
-            <CardFooter className="flex justify-end items-center -my-3">
+            <CardFooter className="flex justify-between items-center -my-3">
+                <p className="text-zinc-500">{nbVote} Vote(s)</p>
                 <Button className="flex items-center" variant='ghost'>
                     <Link href={`/poll/${sondage.id}`} className="flex items-center">
                         See
