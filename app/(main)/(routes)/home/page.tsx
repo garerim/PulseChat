@@ -33,8 +33,8 @@ const HomePage = async () => {
           <PollCard key={sondage.id} sondage={sondage} />
         ))}
         {!sondages.length && (
-          <div>
-            <p className="text-xl mt-20 font-bold text-zinc-400">You don't have any polls yet...</p>
+          <div className="w-full">
+            <p className="text-xl mt-20 font-bold text-zinc-400 text-center">You don't have any polls yet...</p>
           </div>
         )}
       </div>

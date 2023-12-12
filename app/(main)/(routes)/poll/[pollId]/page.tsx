@@ -12,10 +12,6 @@ interface PollIdPageProps {
 
 const PollIdPage = async ({ params }: PollIdPageProps) => {
 
-// TODO : Ajouter un bollean pour savoir si le sondage est public ou non
-// TODO : Faire une page Explorer pour voir les sondages publics (besoin d'être connecté)
-// TODO : Ajouter un temps limite pour voter
-
     const profile = await currentProfile();
 
     if (!profile) {
@@ -39,13 +35,13 @@ const PollIdPage = async ({ params }: PollIdPageProps) => {
 
     return (
         <div className="flex justify-center w-full">
-            <div className="flex flex-col items-center w-fit">
+            <div className="flex flex-col items-center mt-10">
                 <h1 className="text-4xl font-bold text-center">{sondage.title}</h1>
                 <p className="text-center text-xl">{sondage.description}</p>
                 <p className="text-zinc-400">Created by {sondage.user.name.replace("null", "")}</p>
-                <div className="flex items-center justify-between w-full mt-4">
-                    <p className="text-lg">{sondage.choice1}</p>
-                    <p className="text-lg">{sondage.choice2}</p>
+                <div className="flex items-center justify-between gap-x-2 mt-4">
+                    <p className="text-base">{sondage.choice1}</p>
+                    <p className="text-base">{sondage.choice2}</p>
                 </div>
                 <div className="flex w-full mt-2">
                     <div className="text-sm flex items-center p-1 h-5 bg-indigo-500 rounded-l-full grow origin-left" style={{ width: (sondage.nbVote1 * 100) / 20 + "%" }}>

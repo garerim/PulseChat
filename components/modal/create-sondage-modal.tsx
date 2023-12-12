@@ -23,8 +23,9 @@ import {
     FormMessage
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { redirect, useRouter } from 'next/navigation';
+import { Checkbox } from '@/components/ui/checkbox';
 import { useModal } from '@/hooks/use-modal-store';
+import { useRouter } from 'next/navigation';
 
 
 const formSchema = z.object({
@@ -40,6 +41,7 @@ const formSchema = z.object({
     choice2: z.string().min(1, {
         message: 'Poll description is required',
     }),
+    isPublic: z.boolean().default(false),
 })
 
 export const CreateSondageModal = () => {
@@ -55,6 +57,7 @@ export const CreateSondageModal = () => {
             description: '',
             choice1: '',
             choice2: '',
+            isPublic: false,
         },
     })
 
@@ -148,9 +151,20 @@ export const CreateSondageModal = () => {
                                     </FormItem>
                                 )} />
                             </div>
-
                         </div>
                         <DialogFooter className='bg-grey-100 px-6 py-4'>
+                            <FormField control={form.control} name='isPublic' render={({ field }) => (
+                                <FormItem className='w-full flex items-center gap-x-2'>
+                                    <FormLabel className='uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70 mt-2'>Is the poll public ?</FormLabel>
+                                    <FormControl className=''>
+                                        <Checkbox
+                                            checked={field.value}
+                                            onCheckedChange={field.onChange}
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )} />
                             <Button disabled={isLoading}>Create</Button>
                         </DialogFooter>
                     </form>
