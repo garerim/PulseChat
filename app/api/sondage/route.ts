@@ -18,7 +18,7 @@ export async function POST(req: Request) {
             data: {
                 userId: profile.id,
                 title,
-                description,    
+                description, 
                 choice1,
                 choice2,
                 isPublic
