@@ -32,7 +32,7 @@ export const DeleteSondageModal = () => {
 
             onClose();
             router.refresh();
-            router.push('/home')
+            router.push('/poll')
             router.refresh();
         } catch (error) {
             console.log(error);

@@ -25,8 +25,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useModal } from '@/hooks/use-modal-store';
-import { useRouter } from 'next/navigation';
-
+import { useRouter, redirect } from 'next/navigation';
 
 const formSchema = z.object({
     title: z.string().min(1, {
@@ -70,6 +69,7 @@ export const CreateSondageModal = () => {
             form.reset()
             router.refresh()
             onClose();
+            router.push('/poll')
         } catch (error) {
             console.log(error);
         }
@@ -78,6 +78,7 @@ export const CreateSondageModal = () => {
     const handleClose = () => {
         form.reset()
         onClose()
+        router.push('/poll')
     }
 
     return (

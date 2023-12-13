@@ -42,7 +42,7 @@ export default function Header() {
         </div>
 
         <ThemeToggle />
-        <UserButton />
+        <UserButton afterSignOutUrl='/' />
       </div>
     </header>
   )

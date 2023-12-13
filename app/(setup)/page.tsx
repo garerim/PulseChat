@@ -8,7 +8,8 @@ export default async function SetupPage() {
   const profile = await initialProfile();
 
   if (!profile) {
-    redirectToSignIn();
+    // redirectToSignIn();
+    return redirect('/home')
   }
 
   return redirect('/home')

@@ -2,12 +2,17 @@
 
 import { useModal } from "@/hooks/use-modal-store";
 import { Button } from "../ui/button";
+import { cn } from "@/lib/utils";
 
-const PollCreateButton = () => {
+interface PollCreateButtonProps {
+    className?: string
+}
+
+const PollCreateButton = ({className} : PollCreateButtonProps) => {
     const { onOpen } = useModal();
 
     return (
-        <Button className="font-bold" onClick={() => onOpen('createSondage')}>
+        <Button className={cn("font-bold", className)} onClick={() => onOpen('createSondage')}>
             Create a poll
         </Button>
     )

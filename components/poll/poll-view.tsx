@@ -13,6 +13,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
+import PollCreateButton from './poll-create-button';
 
 
 interface PollViewProps {
@@ -57,7 +58,7 @@ const PollView = ({ sondages, profile }: PollViewProps) => {
                     onChange={(e) => setSearchQuery(e.target.value)} />
 
                 <Select onValueChange={(value) => setFilter(value)}>
-                    <SelectTrigger className="w-[180px] mr-auto ml-2">
+                    <SelectTrigger className="w-[180px] mx-2">
                         <SelectValue placeholder="Filter by" />
                     </SelectTrigger>
                     <SelectContent>
@@ -67,6 +68,8 @@ const PollView = ({ sondages, profile }: PollViewProps) => {
                         <SelectItem value="oldest">Oldest</SelectItem>
                     </SelectContent>
                 </Select>
+
+                <PollCreateButton className="mr-auto" />
             </div>
             {sondagesFiltered && sondagesFiltered.map((sondage: Sondage) => (
                 <PollCard key={sondage.id} sondage={sondage} profile={profile} />
