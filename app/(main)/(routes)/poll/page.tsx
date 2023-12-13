@@ -20,13 +20,13 @@ const PollPage = async () => {
 
   return (
     <div>
-      <div className="flex justify-between px-4 mt-4">
+      <div className="flex justify-between mx-4 mt-4 pb-4 border-b">
         <h2 className="text-2xl font-bold">My Polls</h2>
         <PollCreateButton />
       </div>
-      <div className="mt-4 flex flex-wrap gap-5 px-5">
+      <div className="mt-4 flex flex-wrap gap-5 md:px-5 justify-center md:justify-start">
         {sondages.map((sondage) => (
-          <PollCard key={sondage.id} sondage={sondage} />
+          <PollCard key={sondage.id} sondage={sondage} profile={profile} />
         ))}
         {!sondages.length && (
           <div className="w-full">

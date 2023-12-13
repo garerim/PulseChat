@@ -29,7 +29,7 @@ const PollView = ({ sondages, profile }: PollViewProps) => {
         <div className="max-w-[1400px] mx-auto flex flex-wrap gap-3 justify-center mt-10">
             <div className="w-full flex items-center">
                 <Input 
-                    className='min-w-[280px] w-full max-w-[450px] mx-auto md:mx-2'
+                    className='min-w-[280px] w-full max-w-[450px] mx-auto'
                     placeholder="Search a poll..." 
                     onChange={(e) => setSearchQuery(e.target.value)} />
             </div>

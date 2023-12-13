@@ -1,10 +1,6 @@
-import { PollCard } from "@/components/poll/poll-card";
-import { currentProfile } from "@/lib/current-profile";
-import { db } from "@/lib/db"
-import React from "react";
-import { Input } from "@/components/ui/input";
-import { Sondage } from "@prisma/client";
 import PollView from "@/components/poll/poll-view";
+import { currentProfile } from "@/lib/current-profile";
+import { db } from "@/lib/db";
 
 const HomePage = async () => {
 

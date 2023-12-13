@@ -45,10 +45,10 @@ const PollIdPage = async ({ params }: PollIdPageProps) => {
                 </div>
                 <div className="flex w-full mt-2">
                     <div className="text-sm flex items-center p-1 h-5 bg-indigo-500 rounded-l-full grow origin-left" style={{ width: (sondage.nbVote1 * 100) / 20 + "%" }}>
-                        {(sondage.nbVote1 * 100) / 20}%
+                        {(sondage.nbVote1 * 100) / nbVote}%
                     </div>
-                    <div className="text-sm flex items-center justify-end p-1 h-5 bg-rose-500 rounded-r-full grow origin-right" style={{ width: (sondage.nbVote2 * 100) / 20 + "%" }}>
-                        {(sondage.nbVote2 * 100) / 20}%
+                    <div className="text-sm flex items-center justify-end p-1 h-5 bg-rose-500 rounded-r-full grow origin-right" style={{ width: (sondage.nbVote2 * 100) / nbVote + "%" }}>
+                        {(sondage.nbVote2 * 100) / nbVote}%
                     </div>
                 </div>
                 <div className="flex items-center justify-between w-full">

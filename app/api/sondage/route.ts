@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
     try {
         
-        const { title, description, choice1, choice2 } = await req.json();
+        const { title, description, choice1, choice2, isPublic } = await req.json();
         
         const profile = await currentProfile();
 
@@ -18,9 +18,10 @@ export async function POST(req: Request) {
             data: {
                 userId: profile.id,
                 title,
-                description,
+                description,    
                 choice1,
                 choice2,
+                isPublic
             },
         });
 
