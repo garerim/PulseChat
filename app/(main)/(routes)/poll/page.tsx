@@ -30,7 +30,7 @@ const PollPage = async () => {
         ))}
         {!sondages.length && (
           <div className="w-full">
-            <p className="text-xl mt-20 font-bold text-zinc-400 text-center">You don't have any polls yet...</p>
+            <p className="text-xl mt-20 font-bold text-zinc-400 text-center">You do not have any polls yet...</p>
           </div>
         )}
       </div>
