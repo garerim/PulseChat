@@ -51,9 +51,9 @@ const PollView = ({ sondages, profile }: PollViewProps) => {
 
     return (
         <div className="max-w-[1400px] mx-auto flex flex-wrap gap-3 justify-center mt-10">
-            <div className="w-full flex items-center">
+            <div className="w-full flex items-center flex-col md:flex-row gap-y-2">
                 <Input
-                    className='min-w-[280px] w-full max-w-[450px] ml-auto'
+                    className='min-w-[280px] w-full max-w-[450px] md:ml-auto'
                     placeholder="Search a poll..."
                     onChange={(e) => setSearchQuery(e.target.value)} />
 
@@ -69,7 +69,7 @@ const PollView = ({ sondages, profile }: PollViewProps) => {
                     </SelectContent>
                 </Select>
 
-                <PollCreateButton className="mr-auto" />
+                <PollCreateButton className="md:mr-auto" />
             </div>
             {sondagesFiltered && sondagesFiltered.map((sondage: Sondage) => (
                 <PollCard key={sondage.id} sondage={sondage} profile={profile} />

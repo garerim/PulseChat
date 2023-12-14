@@ -6,6 +6,7 @@ import './globals.css'
 import Header from '@/components/layout/header'
 import { cn } from '@/lib/utils'
 import { ModalProvider } from '@/components/provider/modal-provider'
+import Footer from '@/components/layout/footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -32,6 +33,7 @@ export default function RootLayout({
             <Header />
             <ModalProvider />
             {children}
+            <Footer />
           </ThemeProvider>
         </body>
       </html>

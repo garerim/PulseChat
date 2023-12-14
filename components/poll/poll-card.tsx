@@ -80,7 +80,7 @@ export const PollCard = ({ sondage, profile }: PollCardProps) => {
                 </div>
             </CardContent>
             <CardFooter className="flex justify-between items-center -my-3">
-                <p className="text-zinc-500">{nbVote} Vote(s)</p>
+                <p className="text-zinc-500 dark:text-zinc-400">{nbVote} Vote(s)</p>
                 <Button className="flex items-center" variant='ghost'>
                     <Link href={`/poll/${sondage.id}`} className="flex items-center">
                         See

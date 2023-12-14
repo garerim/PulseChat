@@ -1,8 +1,8 @@
 import { InviteButton } from "@/components/invite-button";
-import { Button } from "@/components/ui/button";
-import { useOrigin } from "@/hooks/use-origin";
+import { VoteButton } from "@/components/vote-button";
 import { currentProfile } from "@/lib/current-profile";
 import { db } from "@/lib/db";
+import { cn } from "@/lib/utils";
 import { redirectToSignIn } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
@@ -25,13 +25,16 @@ const PollIdPage = async ({ params }: PollIdPageProps) => {
             id: params.pollId
         },
         include: {
-            user: true
+            user: true,
+            votes: true
         }
     })
 
     if (!sondage) {
         redirect('/home');
     }
+
+    const isAlreadyVoted = sondage.votes.find(vote => vote.voterId === profile?.id);
 
     const nbVote = sondage.nbVote1 + sondage.nbVote2;
 
@@ -47,10 +50,10 @@ const PollIdPage = async ({ params }: PollIdPageProps) => {
                 </div>
                 <div className="flex w-full mt-2">
                     <div className="text-sm flex items-center p-1 h-5 bg-indigo-500 rounded-l-full grow origin-left" style={{ width: (sondage.nbVote1 * 100) / nbVote + "%" }}>
-                    {((sondage.nbVote1 * 100) / nbVote) > 0 ? (sondage.nbVote1 * 100) / nbVote : 0}%
+                        {((sondage.nbVote1 * 100) / nbVote) > 0 ? Math.round((sondage.nbVote1 * 100) / nbVote) : 0}%
                     </div>
                     <div className="text-sm flex items-center justify-end p-1 h-5 bg-rose-500 rounded-r-full grow origin-right" style={{ width: (sondage.nbVote2 * 100) / nbVote + "%" }}>
-                        {((sondage.nbVote2 * 100) / nbVote) > 0 ? (sondage.nbVote2 * 100) / nbVote : 0}%
+                        {((sondage.nbVote2 * 100) / nbVote) > 0 ? Math.round((sondage.nbVote2 * 100) / nbVote) : 0}%
                     </div>
                 </div>
                 <div className="flex items-center justify-between w-full">
@@ -58,8 +61,18 @@ const PollIdPage = async ({ params }: PollIdPageProps) => {
                     <p className="text-sm text-zinc-400">{sondage.nbVote2} votes</p>
                 </div>
                 <div className="flex items-center justify-between w-full mt-2">
-                    <Button className="w-[45%] bg-indigo-500 hover:bg-indigo-400 transition">Vote</Button>
-                    <Button className="w-[45%] bg-rose-500 hover:bg-rose-400 transition">Vote</Button>
+                    {!isAlreadyVoted ? <>
+                        <VoteButton choice={1} sondageId={sondage.id} />
+                        <VoteButton choice={2} sondageId={sondage.id} />
+                    </> : (
+                        <div className="py-2 px-4 bg-secondary w-fit mx-auto rounded-lg">
+                            You already voted for <span className={cn("font-bold",
+                                isAlreadyVoted.choice === "CHOICE1" ? "text-indigo-500" : "text-rose-500"
+                            )}>
+                                {isAlreadyVoted.choice === "CHOICE1" ? sondage.choice1 : sondage.choice2}
+                            </span>
+                        </div>
+                    )}
                 </div>
             </div>
             <div>
