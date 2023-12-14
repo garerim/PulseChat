@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+![Logo](public/image.png)
 
-First, run the development server:
+# PulseChat
 
+PulseChat is an application allowing its users to create, share and vote polls. 
+This application is hosted on [Vercel](https://vercel.com). It is connected to a PostgreSQL database hosted on [NEON](https://neon.tech).
+
+## Technologies Used
+
+- [Next.js](https://nextjs.org/) - React framework for building web applications.
+- [Tailwind CSS](https://tailwindcss.com/) - Cadre CSS utilitaire.
+- [Clerk](https://clerk.com) - Authentication and user management.
+- [Shadcn UI](https://ui.shadcn.com) - Responsive user interface library.
+- [next-themes](https://www.npmjs.com/package/next-themes?activeTab=readme) - Theme manager for Next.js.
+
+
+## Installation
+
+1. Clone the repository :
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+  git clone https://github.com/garerim/PulseChat.git
+  cd PulseChat
 ```
+2. Install dependencies and run project :
+```bash
+  npm install
+  npm run dev
+```
+## Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Light/dark mode toggle
+- Create, Edit, Delete or share polls
+- Search and filter the public polls.
+- Responsive design
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## Environment Variables
 
-To learn more about Next.js, take a look at the following resources:
+To run this project, you will need to add the following environment variables to your .env file
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+`DATABASE_URL` - Link to a PostgreSQL Database.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+`NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` - Clerk public key
 
-## Deploy on Vercel
+`CLERK_SECRET_KEY` - Clerk secret key
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+`NEXT_PUBLIC_CLERK_SIGN_IN_URL`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+`NEXT_PUBLIC_CLERK_SIGN_UP_URL`
+
+`NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL`
+
+`NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL`
+
+
+## License
+
+This project is licensed under the [MIT License](https://choosealicense.com/licenses/mit/)
+
