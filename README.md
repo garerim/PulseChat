@@ -1,5 +1,4 @@
-
-![Logo](public/image.png)
+<img src="public/image.png" alt="Logo" width="100px" height="100px"/>
 
 # PulseChat
 
